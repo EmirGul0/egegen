@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Haber; // Haber modelini kullanıyoruz.
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreHaberRequest; // Yeni haber ekleme validasyonu için
+use App\Http\Requests\UpdateHaberRequest; // Haber güncelleme validasyonu için
+use Illuminate\Http\Request; // Index metodu hala genel Request kullanıyor.
 use Symfony\Component\HttpFoundation\Response; // HTTP durum kodları için.
+
 
 // Haberlerle ilgili tüm API işlemlerini yönetecek kontrolcü.
 class NewsController extends Controller
@@ -29,13 +32,13 @@ class NewsController extends Controller
     }
 
     // Yeni bir haber ekler.
-    public function store(Request $request)
+    public function store(StoreHaberRequest $request)
     {
-        // Şimdilik sadece gelen verileri alıyoruz. Validasyon ve görsel işleme sonra eklenecek.
+
         $haber = Haber::create([
             'baslik' => $request->baslik,
             'icerik' => $request->icerik,
-            'gorsel_yolu' => null, // Görsel yolu şimdilik boş.
+            'gorsel_yolu' => null, // Görsel işleme sonra eklenecek.
             'yayinda_mi' => $request->yayinda_mi ?? true,
         ]);
 
@@ -65,8 +68,8 @@ class NewsController extends Controller
         ], Response::HTTP_OK);
     }
 
-    // mevcut bir haberi günceller.
-    public function update(Request $request, string $id)
+    // Mevcut bir haberi günceller.
+    public function update(UpdateHaberRequest $request, string $id)
     {
         $haber = Haber::find($id);
 
@@ -77,11 +80,11 @@ class NewsController extends Controller
             ], Response::HTTP_NOT_FOUND); // 404 Not Found
         }
 
-        // Şimdilik sadece gelen verileri alıp güncelliyoruz. Validasyon ve görsel işleme sonra eklenecek.
+        // Gelen veriler UpdateHaberRequest tarafından zaten doğrulandı.
         $haber->update([
             'baslik' => $request->baslik ?? $haber->baslik,
             'icerik' => $request->icerik ?? $haber->icerik,
-            'gorsel_yolu' => $request->gorsel_yolu ?? $haber->gorsel_yolu,
+            'gorsel_yolu' => $request->gorsel_yolu ?? $haber->gorsel_yolu, // Görsel işleme sonra eklenecek.
             'yayinda_mi' => $request->yayinda_mi ?? $haber->yayinda_mi,
         ]);
 
