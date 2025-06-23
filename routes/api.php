@@ -7,7 +7,7 @@ use App\Http\Controllers\NewsController; // Haber işlemleri için NewsControlle
 // API rotalarını tanımlıyoruz.
 // Bu dosya, Laravel'in API rotalarını tanımlamak için kullanılır.
 
-Route::middleware(['auth:sanctum', 'check.bearer.token'])->prefix('haberler')->group(function () {
+Route::middleware(['check.bearer.token'])->prefix('haberler')->group(function () {
     // Haberleri listeleme ve arama rotası (GET isteği)
     Route::get('/', [NewsController::class, 'index']);
 

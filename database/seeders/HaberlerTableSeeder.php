@@ -19,3 +19,4 @@ class HaberlerTableSeeder extends Seeder
         $this->command->info('250.000 adet haber başarıyla oluşturuldu!'); //bilgi mesajı
     }
 }
+//data basmak için "php -d memory_limit=2048M artisan db:seed --class=HaberlerTableSeeder" yazabiliriz
