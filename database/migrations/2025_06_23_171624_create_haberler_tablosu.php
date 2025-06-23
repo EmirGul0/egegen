@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('haberler_tablosu', function (Blueprint $table) {
+        Schema::create('haberler', function (Blueprint $table) {
             $table->id(); // Her haberin kendine özel bir numarası (ID) olacak. Otomatik artar.
 
             // Haber başlığı.
