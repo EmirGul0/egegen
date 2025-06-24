@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "ef280cf6-fe48-495d-81da-23e1c59f00d8",
+		"name": "Egegen Haber API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38715889"
+	},
+	"item": [
+		{
+			"name": "Haber Oluştur (POST)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 2BH52wAHrAymR7wP3CASt",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "baslik",
+							"value": "Postman'den Yüklenen Yeni Haber Başlığı",
+							"type": "text"
+						},
+						{
+							"key": "icerik",
+							"value": "Bu haberin içeriği, Postman üzerinden görsel yükleyerek test etmek için yazılmıştır.",
+							"type": "text"
+						},
+						{
+							"key": "yayinda_mi",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "gorsel",
+							"type": "file",
+							"src": "postman-cloud:///1f050718-236a-4070-9a81-72449a14bab1"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/haberler",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"haberler"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Haberleri Listele (GET)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 2BH52wAHrAymR7wP3CASt",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/haberler",  
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"haberler"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Haber Detayı (GET)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 2BH52wAHrAymR7wP3CASt",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/haberler/250001", 
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"haberler",
+						"250001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Haber Güncelle (PUT)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 2BH52wAHrAymR7wP3CASt",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "baslik",
+							"value": "Güncellenmiş Haber Başlığı Testi",
+							"type": "text"
+						},
+						{
+							"key": "yayinda_mi",
+							"value": "0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/haberler/250001",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"haberler",
+						"250001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Haber Sil (DELETE)",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 2BH52wAHrAymR7wP3CASt",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/haberler/250001",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"haberler",
+						"250001"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
